@@ -1,0 +1,22 @@
+<div class="page-header">
+  <h1>Listing all statuses</h1>
+</div>
+
+<% @statuses.each do |status| %>
+
+
+   <b><%= status.user.full_name %> </b> <br />
+  <%= status.content %> <br />
+  <%= link_to time_ago_in_words(status.created_at) + " ago", status %> | <%= link_to "Show", status %> |
+
+  <span class="admin">
+    <%= link_to "Edit", edit_status_path(status) %> |
+    <%= link_to "Delete", status, method: :delete, data: { confirm: "Sure you want to delete?"} %>
+  </span>
+ <br />
+ <br />
+  <% end %>
+
+
+
+<%= link_to 'New Status', new_status_path %>
